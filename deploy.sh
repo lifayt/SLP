@@ -75,8 +75,8 @@ fi
    cd "$DEPLOYMENT_SOURCE"
    npm config set strict-ssl false
    node -v
-   npm update --silent
-   exitWithMessageOnError "npm update failed"
+   #npm update --silent
+   #exitWithMessageOnError "npm update failed"
    npm -v
    npm install --production --silent
    exitWithMessageOnError "npm failed"
@@ -91,7 +91,8 @@ fi
 
  echo Building the DocPad site
  cd "$DEPLOYMENT_SOURCE"
- node ./node_modules/docpad/bin/docpad generate
+ #node ./node_modules/docpad/bin/docpad generate
+ docpad generate
  exitWithMessageOnError "Docpad generation failed"
  echo DocPad generation completed
 
