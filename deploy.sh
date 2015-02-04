@@ -79,10 +79,15 @@ fi
  fi
 
  # 2. Build DocPad Site
+ #echo Building the DocPad site
+ #pushd %DEPLOYMENT_TARGET%
+ #call  %DEPLOYMENT_TARGET%\node_modules\.bin\docpad.cmd generate
+ #IF !ERRORLEVEL! NEQ 0 goto error
+
  echo Building the DocPad site
- pushd %DEPLOYMENT_TARGET%
- call  %DEPLOYMENT_TARGET%\node_modules\.bin\docpad.cmd generate
- IF !ERRORLEVEL! NEQ 0 goto error
+ cd "$DEPLOYMENT_SOURCE"
+ node ./node_modules/docpad/bin/docpad generate
+ exitWithMessageOnError "Docpad generation failed"
 
  # 3. KuduSync
  echo Kudu Sync from "$DEPLOYMENT_SOURCE/out" to "$DEPLOYMENT_TARGET"
