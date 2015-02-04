@@ -92,11 +92,8 @@ fi
  :: 2. Build DocPad site
  echo Building DocPad site...
  cd "$DEPLOYMENT_SOURCE"
- rd /s /q out
- #IF !ERRORLEVEL! NEQ 0 goto error
  node ./node_modules/docpad/bin/docpad generate
- #IF !ERRORLEVEL! NEQ 0 goto error
- cd
+ exitWithMessageOnError "docpad gen failed"
 
  # 3. KuduSync
  #echo Kudu Sync from "$DEPLOYMENT_SOURCE/out" to "$DEPLOYMENT_TARGET"
@@ -104,9 +101,8 @@ fi
  #exitWithMessageOnError "Kudu Sync failed"
 
  :: 3. KuduSync
- echo Copying Files...
- $KUDU_SYNC_CMD -v 500 -f "$DEPLOYMENT_SOURCE/out" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH"
- #IF !ERRORLEVEL! NEQ 0 goto error
+ $KUDU_SYNC_CMD -v 500 -f "$DEPLOYMENT_SOURCE/out" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" 
+ exitWithMessageOnError "kudu sync failed"
  
 ##################################################################################################################################
 
