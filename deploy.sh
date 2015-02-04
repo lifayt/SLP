@@ -74,6 +74,7 @@ fi
  if [ -e "$DEPLOYMENT_SOURCE/package.json" ]; then
    cd "$DEPLOYMENT_SOURCE"
    npm config set strict-ssl false
+   node -v
    npm install --production #--silent
    exitWithMessageOnError "npm failed"
    cd - > /dev/null
