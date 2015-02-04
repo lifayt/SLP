@@ -75,7 +75,7 @@ fi
    cd "$DEPLOYMENT_SOURCE"
    npm config set strict-ssl false
    node -v
-   npm update --silent
+   npm update #--silent
    exitWithMessageOnError "npm update failed"
    npm -v
    npm install --production #--silent
