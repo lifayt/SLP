@@ -91,10 +91,8 @@ fi
 
  echo Building the DocPad site
  cd "$DEPLOYMENT_SOURCE"
- #node ./node_modules/docpad/bin/docpad generate
- docpad generate
+ node ./node_modules/docpad/bin/docpad generate
  exitWithMessageOnError "Docpad generation failed"
- echo DocPad generation completed
 
  # 3. KuduSync
  echo Kudu Sync from "$DEPLOYMENT_SOURCE/out" to "$DEPLOYMENT_TARGET"
