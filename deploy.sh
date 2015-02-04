@@ -91,12 +91,12 @@ fi
 
  :: 2. Build DocPad site
  echo Building DocPad site...
- pushd "%DEPLOYMENT_SOURCE%"
+ cd "$DEPLOYMENT_SOURCE"
  rd /s /q out
- IF !ERRORLEVEL! NEQ 0 goto error
- "!NODE_EXE!" ./node_modules/docpad/bin/docpad generate
- IF !ERRORLEVEL! NEQ 0 goto error
- popd
+ #IF !ERRORLEVEL! NEQ 0 goto error
+ node ./node_modules/docpad/bin/docpad generate
+ #IF !ERRORLEVEL! NEQ 0 goto error
+ cd
 
  # 3. KuduSync
  #echo Kudu Sync from "$DEPLOYMENT_SOURCE/out" to "$DEPLOYMENT_TARGET"
@@ -105,8 +105,8 @@ fi
 
  :: 3. KuduSync
  echo Copying Files...
- call %KUDU_SYNC_CMD% -v 500 -f "%DEPLOYMENT_SOURCE%\out" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%"
- IF !ERRORLEVEL! NEQ 0 goto error
+ $KUDU_SYNC_CMD -v 500 -f "$DEPLOYMENT_SOURCE/out" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH"
+ #IF !ERRORLEVEL! NEQ 0 goto error
  
 ##################################################################################################################################
 
