@@ -85,20 +85,29 @@ fi
 
  # 2. Build DocPad Site
  #echo Building the DocPad site
- #pushd %DEPLOYMENT_TARGET%
- #call  %DEPLOYMENT_TARGET%\node_modules\.bin\docpad.cmd generate
- #IF !ERRORLEVEL! NEQ 0 goto error
+ #cd "$DEPLOYMENT_SOURCE"
+ #node ./node_modules/docpad/bin/docpad generate
+ #exitWithMessageOnError "Docpad generation failed"
 
- echo Building the DocPad site
- cd "$DEPLOYMENT_SOURCE"
- node ./node_modules/docpad/bin/docpad generate
- exitWithMessageOnError "Docpad generation failed"
+ :: 2. Build DocPad site
+ echo Building DocPad site...
+ pushd "%DEPLOYMENT_SOURCE%"
+ rd /s /q out
+ IF !ERRORLEVEL! NEQ 0 goto error
+ "!NODE_EXE!" .\node_modules\docpad\bin\docpad -e static generate
+ IF !ERRORLEVEL! NEQ 0 goto error
+ popd
 
  # 3. KuduSync
- echo Kudu Sync from "$DEPLOYMENT_SOURCE/out" to "$DEPLOYMENT_TARGET"
- $KUDU_SYNC_COMMAND -q -f "$DEPLOYMENT_SOURCE/out" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.deployment;deploy.sh" 2> /dev/null
- exitWithMessageOnError "Kudu Sync failed"
+ #echo Kudu Sync from "$DEPLOYMENT_SOURCE/out" to "$DEPLOYMENT_TARGET"
+ #$KUDU_SYNC_COMMAND -q -f "$DEPLOYMENT_SOURCE/out" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.deployment;deploy.sh" 2> /dev/null
+ #exitWithMessageOnError "Kudu Sync failed"
 
+ :: 3. KuduSync
+ echo Copying Files...
+ call %KUDU_SYNC_CMD% -v 500 -f "%DEPLOYMENT_SOURCE%\out" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%"
+ IF !ERRORLEVEL! NEQ 0 goto error
+ 
 ##################################################################################################################################
 
 # Post deployment stub
