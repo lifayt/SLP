@@ -78,7 +78,7 @@ fi
    #npm update #--silent
    #exitWithMessageOnError "npm update failed"
    npm -v
-   npm install --production #--silent
+   npm install --production --silent
    exitWithMessageOnError "npm failed"
    cd - > /dev/null
  fi
