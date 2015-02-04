@@ -3,7 +3,7 @@
 	<title>Your Website</title>
 	<link href="http://website.com/atom.xml" rel="self"/>
 	<link href="http://website.com"/>
-	<updated>2015-02-04T18:13:41.409Z</updated>
+	<updated>2015-02-04T18:31:03.422Z</updated>
 	<id>http://website.com</id>
 	<author>
 		<name>Your Name</name>
@@ -121,7 +121,7 @@
 			        &lt;div class=&quot;col-xs-4&quot;&gt;
 			        	&lt;p style=&quot;font-size:8&quot;&gt;
 			        		&lt;font size=&quot;0.5&quot;&gt;
-								LAST UPDATED : 2015-02-04T18:13:41.409Z
+								LAST UPDATED : 2015-02-04T18:31:03.422Z
 							&lt;/font&gt;
 						&lt;p&gt;
 			        &lt;/div&gt;
@@ -292,7 +292,7 @@ var inject = function(){
 			        &lt;div class=&quot;col-xs-4&quot;&gt;
 			        	&lt;p style=&quot;font-size:8&quot;&gt;
 			        		&lt;font size=&quot;0.5&quot;&gt;
-								LAST UPDATED : 2015-02-04T18:13:41.409Z
+								LAST UPDATED : 2015-02-04T18:31:03.422Z
 							&lt;/font&gt;
 						&lt;p&gt;
 			        &lt;/div&gt;
