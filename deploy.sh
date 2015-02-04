@@ -89,10 +89,10 @@ fi
  #node ./node_modules/docpad/bin/docpad generate
  #exitWithMessageOnError "Docpad generation failed"
 
- :: 2. Build DocPad site
+ 2. Build DocPad site
  echo Building DocPad site...
  cd "$DEPLOYMENT_SOURCE"
- node ./node_modules/docpad/bin/docpad generate
+ node ./node_modules/docpad/bin/docpad -e generate
  exitWithMessageOnError "docpad gen failed"
 
  # 3. KuduSync
@@ -100,7 +100,7 @@ fi
  #$KUDU_SYNC_COMMAND -q -f "$DEPLOYMENT_SOURCE/out" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.deployment;deploy.sh" 2> /dev/null
  #exitWithMessageOnError "Kudu Sync failed"
 
- :: 3. KuduSync
+ 3. KuduSync
  $KUDU_SYNC_CMD -v 500 -f "$DEPLOYMENT_SOURCE/out" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" 
  exitWithMessageOnError "kudu sync failed"
  
