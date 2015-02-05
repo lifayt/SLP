@@ -69,8 +69,8 @@
 		<!-- Content -->
 		<section id="content" class="content">
 			<%- @content %>
-		</section>
-
+		</section>	
+		<br>
 		<!-- Footer -->
 		<footer>
 			<div class="container" style="text-align:center">

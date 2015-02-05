@@ -66,13 +66,13 @@ title: 'Home'
       <center><img class="img-circle" src="/images/greg_1.jpg" alt="Generic placeholder image" style="width: 126px; height: 140px;">
       <h2>Greg Slawson</h2></center>
       <p align="left">Bio text goes here.</p>
-      <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+      <p><!--<a class="btn btn-default" href="#" role="button">View details »</a>--></p>
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-6">
       <center><img class="img-circle" src="/images/candace_1.jpg" alt="Generic placeholder image" style="width: 126px; height: 140px;">
-      <h2>Candace Lee</h2></center>
+      <h2>Candice Lee</h2></center>
       <p align="left">Bio text goes here.</p>
-      <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+      <p><!--<a class="btn btn-default" href="#" role="button">View details »</a>--></p>
     </div><!-- /.col-lg-4 -->
     <!--<div class="col-lg-4">
       <center><img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" style="width: 140px; height: 140px;">
